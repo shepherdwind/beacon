@@ -31,6 +31,7 @@ app.configure('production', function(){
 // Routes
 
 app.get('/run/', routes.runner);
+app.get('/status', routes.status);
 app.get('/', routes.index);
 
 app.listen(3000, function(){

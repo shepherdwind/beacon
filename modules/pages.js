@@ -3,23 +3,35 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var PagesSchema = new Schema({
-  name: {
-    type: String,
-    unique: true
+  timeStart: Date,
+  timeEnd: Date,
+  url: String,
+  start: {
+    box: [Number, Number],
+    dom: Number,
+    img: Number,
+    winH: Number
   },
-  version: String,
-  state: String,
-  config: Object,
-  author: Object,
-  team: String,
-  issue: {
-    repo: String,
-    id: Number
+  end: {
+    box: [Number, Number],
+    dom: Number,
+    img: Number,
+    winH: Number
   },
-  date: {
-    type: Date,
-    "default": Date.now
-  }
+  network: {
+    css: { size: Number, num: Number},
+    js: { size: Number, num: Number},
+    html: { size: Number, num: Number},
+    img: { size: Number, num: Number},
+    size: Number,
+    num: Number,
+    onload: Number
+  },
+  imgs: [{
+    actual: [Number, Number],
+    render: [Number, Number],
+    src: String
+  }]
 });
 
 mongoose.model("Pages", PagesSchema);
